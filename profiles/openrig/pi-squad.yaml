@@ -1,0 +1,50 @@
+# pi-squad — Pi-native OpenRig team topology.
+#
+# Boot with:
+#   rig up ~/.openrig/specs/pi-squad.yaml --cwd .
+#
+# Every seat runs `runtime: pi`, so each seat inherits its Pi profile
+# (PI_CODING_AGENT_DIR), MCP servers (including the `openrig` MCP for
+# cross-seat coordination), and skills. Adjust model names / seat counts to
+# taste; `rig ps` / `rig status` inspect a running rig.
+version: "0.2"
+name: pi-squad
+summary: >
+  Default virt-box Pi team: a Pi builder, Pi researcher, and Pi QA auditor
+  coordinating over the OpenRig queue and chatroom.
+
+pods:
+  - id: dev
+    label: Development
+    summary: Core engineering pod running on the Pi runtime
+    members:
+      - id: build
+        label: Builder
+        agent_ref: "local:development/implementer"
+        runtime: pi
+        profile: default
+        role: builder
+        cwd: "."
+      - id: research
+        label: Researcher
+        agent_ref: "local:research/analyst"
+        runtime: pi
+        profile: default
+        role: researcher
+        cwd: "."
+      - id: qa
+        label: QA Auditor
+        agent_ref: "local:development/qa"
+        runtime: pi
+        profile: default
+        role: qa
+        cwd: "."
+    edges:
+      - kind: delegates_to
+        from: build
+        to: research
+      - kind: delegates_to
+        from: build
+        to: qa
+
+edges: []

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://pi.dev/schemas/settings.schema.json",
+  "defaultTools": [
+    "read",
+    "bash",
+    "edit",
+    "write",
+    "grep",
+    "find",
+    "ls",
+    "+codemode"
+  ],
+  "extensions": [],
+  "skills": []
+}

@@ -1,0 +1,15 @@
+# Creation rules for sops-nix. Copy the age public key of an admin and the
+# VM's SSH host key (converted with ssh-to-age) into the `keys:` lists,
+# then create secrets/secrets.yaml with `sops secrets/secrets.yaml`.
+keys:
+  # Replace with your admin age public key (age-keygen -o ~/.config/sops/age/keys.txt):
+  - &admin age1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  # Uncomment and replace with VM host key (ssh-to-age -i /etc/ssh/ssh_host_ed25519_key.pub):
+  # - &virtbox age1yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+
+creation_rules:
+  - path_regex: secrets/secrets\.yaml$
+    key_groups:
+      - age:
+          - *admin
+          # - *virtbox

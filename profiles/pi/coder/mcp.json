@@ -1,0 +1,32 @@
+{
+  "mcpServers": {
+    "codebase-memory": {
+      "command": "npx",
+      "args": ["-y", "codebase-memory-mcp"],
+      "env": {}
+    },
+    "context7": {
+      "url": "https://mcp.context7.com/mcp",
+      "headers": {
+        "CONTEXT7_API_KEY": "${CONTEXT7_API_KEY}"
+      }
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/cli", "mcp"],
+      "env": {}
+    },
+    "semgrep": {
+      "command": "npx",
+      "args": ["-y", "@semgrep/mcp"],
+      "env": {}
+    },
+    "openrig": {
+      "command": "/home/agent/.npm-global/bin/rig",
+      "args": ["mcp", "serve"],
+      "env": {
+        "OPENRIG_HOME": "/home/agent/.openrig"
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "semgrep": {
+      "command": "npx",
+      "args": ["-y", "@semgrep/mcp"],
+      "env": {}
+    },
+    "codebase-memory": {
+      "command": "npx",
+      "args": ["-y", "codebase-memory-mcp"],
+      "env": {}
+    }
+  }
+}

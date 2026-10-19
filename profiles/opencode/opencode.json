@@ -1,0 +1,49 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "anthropic/claude-sonnet-4-5",
+  "autoupdate": false,
+  "permission": {
+    "edit": "ask",
+    "bash": "ask"
+  },
+  "mcp": {
+    "codebase-memory": {
+      "type": "local",
+      "command": ["npx", "-y", "codebase-memory-mcp"],
+      "environment": {}
+    },
+    "semgrep": {
+      "type": "local",
+      "command": ["npx", "-y", "@semgrep/mcp"],
+      "environment": {}
+    },
+    "context7": {
+      "type": "remote",
+      "url": "https://mcp.context7.com/mcp",
+      "headers": {
+        "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}"
+      }
+    },
+    "firecrawl": {
+      "type": "local",
+      "command": ["npx", "-y", "firecrawl-mcp"],
+      "environment": {
+        "FIRECRAWL_API_KEY": "{env:FIRECRAWL_API_KEY}"
+      }
+    },
+    "tavily": {
+      "type": "local",
+      "command": ["npx", "-y", "tavily-mcp"],
+      "environment": {
+        "TAVILY_API_KEY": "{env:TAVILY_API_KEY}"
+      }
+    },
+    "openrig": {
+      "type": "local",
+      "command": ["/home/agent/.npm-global/bin/rig", "mcp", "serve"],
+      "environment": {
+        "OPENRIG_HOME": "/home/agent/.openrig"
+      }
+    }
+  }
+}

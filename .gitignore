@@ -1,0 +1,7 @@
+result*
+.env
+secrets/secrets.yaml
+secrets/*.age
+*.qcow2
+.direnv/
+.opencode/
